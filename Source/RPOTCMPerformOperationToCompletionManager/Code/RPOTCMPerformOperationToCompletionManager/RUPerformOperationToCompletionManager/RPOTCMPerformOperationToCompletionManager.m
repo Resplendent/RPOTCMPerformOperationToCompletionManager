@@ -20,9 +20,11 @@
 
 @interface RPOTCMPerformOperationToCompletionManager ()
 
+@property (nonatomic, readonly) BOOL canAttemptNextRetryOperation;
+
 @property (nonatomic, readonly) NSMutableArray* operationsToRetry;
 -(void)addOperationToRetry:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
--(void)retryOperationsToRetry;
+-(void)attemptToPerformOperationsToRetry;
 
 -(void)notificationDidFire_FXReachability_StatusDidChange;
 
@@ -73,18 +75,28 @@
 }
 
 #pragma mark - Retry
+-(BOOL)canAttemptNextRetryOperation
+{
+	return ([FXReachability isReachable]);
+}
+
 -(void)addOperationToRetry:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
 
 		[self.operationsToRetry addObject:operation];
-		
+
+		[self attemptToPerformOperationsToRetry];
 	});
 }
 
--(void)retryOperationsToRetry
+-(void)attemptToPerformOperationsToRetry
 {
+	kRUConditionalReturn(self.canAttemptNextRetryOperation == false, NO);
+
 	dispatch_async(dispatch_get_main_queue(), ^{
+
+		kRUConditionalReturn(self.canAttemptNextRetryOperation == false, NO);
 
 		NSArray* operationsToRetry = [self.operationsToRetry copy];
 		[self.operationsToRetry removeAllObjects];
@@ -100,10 +112,7 @@
 #pragma mark - NSNotificationCenter
 -(void)notificationDidFire_FXReachability_StatusDidChange
 {
-	if ([FXReachability isReachable])
-	{
-		[self retryOperationsToRetry];
-	}
+	[self attemptToPerformOperationsToRetry];
 }
 
 #pragma mark - Singleton
