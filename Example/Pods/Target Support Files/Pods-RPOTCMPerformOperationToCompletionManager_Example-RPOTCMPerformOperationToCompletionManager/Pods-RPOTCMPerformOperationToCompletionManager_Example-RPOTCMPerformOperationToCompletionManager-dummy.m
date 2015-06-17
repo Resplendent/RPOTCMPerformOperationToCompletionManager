@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_RPOTCMPerformOperationToCompletionManager_Example_RPOTCMPerformOperationToCompletionManager : NSObject
+@end
+@implementation PodsDummy_Pods_RPOTCMPerformOperationToCompletionManager_Example_RPOTCMPerformOperationToCompletionManager
+@end

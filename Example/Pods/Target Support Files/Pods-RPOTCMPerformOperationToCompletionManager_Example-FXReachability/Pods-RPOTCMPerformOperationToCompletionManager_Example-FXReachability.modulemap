@@ -1,0 +1,6 @@
+framework module FXReachability {
+  umbrella header "Pods-RPOTCMPerformOperationToCompletionManager_Example-FXReachability-umbrella.h"
+
+  export *
+  module * { export * }
+}
