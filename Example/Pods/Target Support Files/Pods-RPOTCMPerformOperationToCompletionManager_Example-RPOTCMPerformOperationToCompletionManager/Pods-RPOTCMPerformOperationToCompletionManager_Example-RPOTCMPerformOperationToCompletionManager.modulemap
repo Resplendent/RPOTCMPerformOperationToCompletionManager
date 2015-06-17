@@ -1,6 +1,0 @@
-framework module RPOTCMPerformOperationToCompletionManager {
-  umbrella header "Pods-RPOTCMPerformOperationToCompletionManager_Example-RPOTCMPerformOperationToCompletionManager-umbrella.h"
-
-  export *
-  module * { export * }
-}

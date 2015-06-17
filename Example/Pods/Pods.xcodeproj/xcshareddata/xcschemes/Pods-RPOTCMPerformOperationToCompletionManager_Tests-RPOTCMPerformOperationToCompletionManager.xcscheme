@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A51840B59A5980F5550B2DA"
-               BuildableName = "RPOTCMPerformOperationToCompletionManager.framework"
+               BlueprintIdentifier = "6B657A1BD949483EE9C59773"
+               BuildableName = "libPods-RPOTCMPerformOperationToCompletionManager_Tests-RPOTCMPerformOperationToCompletionManager.a"
                BlueprintName = "Pods-RPOTCMPerformOperationToCompletionManager_Tests-RPOTCMPerformOperationToCompletionManager"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1386AAF9640C3A6433506507 /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3665126E32AD39D36C4815D /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -22,7 +21,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		DC5D749D15A87958640E7CA9 /* Pods_RPOTCMPerformOperationToCompletionManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95868CDFED894778DEBF7F9 /* Pods_RPOTCMPerformOperationToCompletionManager_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8FFC97A170CB8090CBF55FA9 /* libPods-RPOTCMPerformOperationToCompletionManager_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6EA7F5027F9DCE476B8B87 /* libPods-RPOTCMPerformOperationToCompletionManager_Tests.a */; };
+		9C1F33D7F4A533AF8563D48C /* libPods-RPOTCMPerformOperationToCompletionManager_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF64E39371DE50C68A15BCA3 /* libPods-RPOTCMPerformOperationToCompletionManager_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,7 @@
 		14415C9631EF49A04E49F03F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3E7F5F98EDD16200DE8F3ACF /* Pods-RPOTCMPerformOperationToCompletionManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Tests/Pods-RPOTCMPerformOperationToCompletionManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D52F532BF2C3137CCE9673 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4C6EA7F5027F9DCE476B8B87 /* libPods-RPOTCMPerformOperationToCompletionManager_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RPOTCMPerformOperationToCompletionManager_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* RPOTCMPerformOperationToCompletionManager_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPOTCMPerformOperationToCompletionManager_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,9 +63,8 @@
 		67F376564E0646B02A0ED525 /* RPOTCMPerformOperationToCompletionManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RPOTCMPerformOperationToCompletionManager.podspec; path = ../RPOTCMPerformOperationToCompletionManager.podspec; sourceTree = "<group>"; };
 		68DCBB3A0F5EDAED7216ED34 /* Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Tests/Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B95868CDFED894778DEBF7F9 /* Pods_RPOTCMPerformOperationToCompletionManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPOTCMPerformOperationToCompletionManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3665126E32AD39D36C4815D /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF40E0C47EFFA59794FAD358 /* Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Example/Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		EF64E39371DE50C68A15BCA3 /* libPods-RPOTCMPerformOperationToCompletionManager_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RPOTCMPerformOperationToCompletionManager_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				DC5D749D15A87958640E7CA9 /* Pods_RPOTCMPerformOperationToCompletionManager_Example.framework in Frameworks */,
+				9C1F33D7F4A533AF8563D48C /* libPods-RPOTCMPerformOperationToCompletionManager_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				1386AAF9640C3A6433506507 /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework in Frameworks */,
+				8FFC97A170CB8090CBF55FA9 /* libPods-RPOTCMPerformOperationToCompletionManager_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +132,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				B95868CDFED894778DEBF7F9 /* Pods_RPOTCMPerformOperationToCompletionManager_Example.framework */,
-				D3665126E32AD39D36C4815D /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework */,
+				EF64E39371DE50C68A15BCA3 /* libPods-RPOTCMPerformOperationToCompletionManager_Example.a */,
+				4C6EA7F5027F9DCE476B8B87 /* libPods-RPOTCMPerformOperationToCompletionManager_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,7 +204,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				DD764BF5494486BF3145D046 /* Embed Pods Frameworks */,
 				23D1558DA44A51E53F5B7F3E /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -224,7 +223,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				B5CDCC4214AEACB6150978AE /* Embed Pods Frameworks */,
 				1DF435417BD10CF22C878F3F /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -351,36 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B5CDCC4214AEACB6150978AE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Tests/Pods-RPOTCMPerformOperationToCompletionManager_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD764BF5494486BF3145D046 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Example/Pods-RPOTCMPerformOperationToCompletionManager_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

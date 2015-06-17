@@ -1,18 +1,21 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
-platform :ios, '7.0'
 
-target 'RPOTCMPerformOperationToCompletionManager_Example', :exclusive => true do
-  pod "RPOTCMPerformOperationToCompletionManager", :path => "../"
-  
-  pod 'FXReachability', '1.3'
+
+def import_pods
+	pod "RPOTCMPerformOperationToCompletionManager", :path => "../"
+	pod 'FXReachability', '1.3'
 end
 
-target 'RPOTCMPerformOperationToCompletionManager_Tests', :exclusive => true do
-  pod "RPOTCMPerformOperationToCompletionManager", :path => "../"
 
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'FBSnapshotTestCase'
-  pod 'Expecta+Snapshots'
+target 'RPOTCMPerformOperationToCompletionManager_Example', :exclusive => true do
+	import_pods
+end
+
+
+target 'RPOTCMPerformOperationToCompletionManager_Tests', :exclusive => true do
+	import_pods
+	pod 'Specta'
+	pod 'Expecta'
+	pod 'FBSnapshotTestCase'
+	pod 'Expecta+Snapshots'
 end

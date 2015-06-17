@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 8
 #define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 1
 
+// FXReachability
+#define COCOAPODS_POD_AVAILABLE_FXReachability
+#define COCOAPODS_VERSION_MAJOR_FXReachability 1
+#define COCOAPODS_VERSION_MINOR_FXReachability 3
+#define COCOAPODS_VERSION_PATCH_FXReachability 0
+
 // RPOTCMPerformOperationToCompletionManager
 #define COCOAPODS_POD_AVAILABLE_RPOTCMPerformOperationToCompletionManager
 #define COCOAPODS_VERSION_MAJOR_RPOTCMPerformOperationToCompletionManager 0
