@@ -25,7 +25,7 @@ SPEC CHECKSUMS:
   Expecta+Snapshots: ca15bfb57e7a0f78f86c7699c2c54ffacfa4ad2a
   FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
   FXReachability: fc1ea418e5db48cc3e0dd7748f7baf80b144f50f
-  RPOTCMPerformOperationToCompletionManager: 2948f6a8ce5dab9125d3fb336bfd704e60707988
+  RPOTCMPerformOperationToCompletionManager: fb92db67d54b84f7ff4cdf6cc9f5afc56ca60a4f
   Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
 
 COCOAPODS: 0.37.2
