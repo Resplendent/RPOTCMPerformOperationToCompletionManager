@@ -17,11 +17,11 @@ Pod::Spec.new do |s|
                        * Markdown format.
                        * Don't worry about the indent, we strip it!
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/RPOTCMPerformOperationToCompletionManager"
+  s.homepage         = "https://github.com/Resplendent/RPOTCMPerformOperationToCompletionManager.git"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Richard Reitzfeld" => "richie.reitzfeld@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/RPOTCMPerformOperationToCompletionManager.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Resplendent/RPOTCMPerformOperationToCompletionManager.git", :tag => "v#{s.version}"}
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
