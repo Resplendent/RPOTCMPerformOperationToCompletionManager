@@ -10,13 +10,13 @@
 Pod::Spec.new do |s|
   s.name             = "RPOTCMPerformOperationToCompletionManager"
   s.version          = "0.1.0"
-  s.summary          = "A short description of RPOTCMPerformOperationToCompletionManager."
-  s.description      = <<-DESC
-                       An optional longer description of RPOTCMPerformOperationToCompletionManager
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
+  s.summary          = "Asynchronously performs operations while observing for reachability."
+# s.description      = <<-DESC
+#                        An optional longer description of RPOTCMPerformOperationToCompletionManager
+#
+#                        * Markdown format.
+#                        * Don't worry about the indent, we strip it!
+#                        DESC
   s.homepage         = "https://github.com/Resplendent/RPOTCMPerformOperationToCompletionManager.git"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
