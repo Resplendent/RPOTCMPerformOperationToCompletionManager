@@ -1,0 +1,20 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+
+def import_pods
+	pod "RPOTCMPerformOperationToCompletionManager", :path => "../"
+end
+
+
+target 'RPOTCMPerformOperationToCompletionManager_Example', :exclusive => true do
+	import_pods
+end
+
+
+target 'RPOTCMPerformOperationToCompletionManager_Tests', :exclusive => true do
+	import_pods
+	pod 'Specta'
+	pod 'Expecta'
+	pod 'FBSnapshotTestCase'
+	pod 'Expecta+Snapshots'
+end

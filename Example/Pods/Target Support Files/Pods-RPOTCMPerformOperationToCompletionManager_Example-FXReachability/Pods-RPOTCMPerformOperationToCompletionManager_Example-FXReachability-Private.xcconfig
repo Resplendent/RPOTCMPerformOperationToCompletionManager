@@ -1,0 +1,6 @@
+#include "Pods-RPOTCMPerformOperationToCompletionManager_Example-FXReachability.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/FXReachability" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Expecta" "${PODS_ROOT}/Headers/Public/Expecta+Snapshots" "${PODS_ROOT}/Headers/Public/FBSnapshotTestCase" "${PODS_ROOT}/Headers/Public/FXReachability" "${PODS_ROOT}/Headers/Public/RPOTCMPerformOperationToCompletionManager" "${PODS_ROOT}/Headers/Public/ResplendentUtilities" "${PODS_ROOT}/Headers/Public/Specta"
+OTHER_LDFLAGS = ${PODS_RPOTCMPERFORMOPERATIONTOCOMPLETIONMANAGER_EXAMPLE_FXREACHABILITY_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES
