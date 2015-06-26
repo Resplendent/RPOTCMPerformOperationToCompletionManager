@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RPOTCMPerformOperationToCompletionManager"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "Asynchronously performs operations while observing for reachability."
 # s.description      = <<-DESC
 #                        An optional longer description of RPOTCMPerformOperationToCompletionManager
@@ -35,5 +35,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'ResplendentUtilities', '~> 0.2'
-  s.dependency 'FXReachability', '1.3'
+  s.dependency 'FXReachability', '~> 1.3'
 end
