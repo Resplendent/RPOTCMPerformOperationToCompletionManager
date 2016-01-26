@@ -15,10 +15,14 @@
 @interface RUNavigationControllerDelegate_navbarColorSetter : NSObject <UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIColor* defaultColor;
+@property (nonatomic, assign) BOOL useDefaultColorWhenOtherSourcesReturnNil;
 
 -(UIColor*)navbarColorForViewController:(UIViewController*)viewController;
 -(UIColor*)statusBarColorForViewController:(UIViewController*)viewController;
 
 -(void)updateNavigationController:(UINavigationController*)navigationController withColorFromViewController:(UIViewController*)viewController;
+
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
 @end

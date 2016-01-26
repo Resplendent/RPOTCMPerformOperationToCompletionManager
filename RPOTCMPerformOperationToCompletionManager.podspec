@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RPOTCMPerformOperationToCompletionManager"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "Asynchronously performs operations while observing for reachability."
 # s.description      = <<-DESC
 #                        An optional longer description of RPOTCMPerformOperationToCompletionManager
@@ -20,7 +20,10 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/Resplendent/RPOTCMPerformOperationToCompletionManager.git"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
-  s.author           = { "Richard Reitzfeld" => "richie.reitzfeld@gmail.com" }
+  s.authors          = {
+							"Benjamin Maer" => "ben@resplendent.co",
+							"Richard Reitzfeld" => "richie.reitzfeld@gmail.com"
+}
   s.source           = { :git => "https://github.com/Resplendent/RPOTCMPerformOperationToCompletionManager.git", :tag => "v#{s.version}"}
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -34,6 +37,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'ResplendentUtilities', '~> 0.2'
+  s.dependency 'ResplendentUtilities', '~> 0.4'
   s.dependency 'FXReachability', '~> 1.3'
 end

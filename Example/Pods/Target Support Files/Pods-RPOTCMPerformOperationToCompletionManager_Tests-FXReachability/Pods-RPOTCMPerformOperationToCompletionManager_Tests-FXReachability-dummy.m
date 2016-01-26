@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_RPOTCMPerformOperationToCompletionManager_Tests_FXReachability : NSObject
-@end
-@implementation PodsDummy_Pods_RPOTCMPerformOperationToCompletionManager_Tests_FXReachability
-@end
