@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B735C9B125EA2C7884174B13'
+               BlueprintIdentifier = '648DFC66B8087E7ABE57C0AF'
                BlueprintName = 'RPOTCMPerformOperationToCompletionManager'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RPOTCMPerformOperationToCompletionManager.framework'>

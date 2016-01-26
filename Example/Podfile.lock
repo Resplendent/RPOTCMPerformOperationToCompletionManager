@@ -10,7 +10,7 @@ PODS:
     - FBSnapshotTestCase/Core
   - FXReachability (1.3.1)
   - ResplendentUtilities (0.4)
-  - RPOTCMPerformOperationToCompletionManager (0.1.2):
+  - RPOTCMPerformOperationToCompletionManager (0.1.3):
     - FXReachability (~> 1.3)
     - ResplendentUtilities (~> 0.4)
   - Specta (1.0.5)
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
   FXReachability: 1d9a83617474f2a4e1b53c11a13ec4337428c126
   ResplendentUtilities: 0c174f43ad80302388f1fe4715f90c94d77f6ba8
-  RPOTCMPerformOperationToCompletionManager: b86f0b25912174d17edb2407f85ba1f706a51796
+  RPOTCMPerformOperationToCompletionManager: f800eefeebfc6c4ea589ddafaaee5cb00d541373
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
 COCOAPODS: 0.39.0
