@@ -8,13 +8,13 @@
 
 #import "NSObject+RPOTCM_FXReachabilityNotifications.h"
 
-#import <FXReachability/FXReachability.h>
+@import FXReachability;
 
 
 
 
 
-NSString* const kRPOTCM_FXReachabilityNotifications_StatusDidChange = @"kRPOTCM_FXReachabilityNotifications_StatusDidChange";
+kRUDefineNSStringConstant(kRPOTCM_FXReachabilityNotifications_StatusDidChange)
 
 
 

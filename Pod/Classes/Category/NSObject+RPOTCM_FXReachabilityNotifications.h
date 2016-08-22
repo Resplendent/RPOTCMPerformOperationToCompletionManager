@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RUNotifications.h"
+@import ResplendentUtilities;
 
 
 
