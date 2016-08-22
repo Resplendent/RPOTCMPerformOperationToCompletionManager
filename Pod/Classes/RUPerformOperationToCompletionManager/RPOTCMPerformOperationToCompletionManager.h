@@ -18,8 +18,10 @@
  */
 @interface RPOTCMPerformOperationToCompletionManager : NSObject
 
--(void)addOperationToBePerformedToCompletion:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
+#pragma mark - operationsToRetry
+-(void)addOperationToBePerformedToCompletion:(nonnull id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
 
-+(instancetype)sharedInstance;
+#pragma mark - Singleton
++(nonnull instancetype)sharedInstance;
 
 @end

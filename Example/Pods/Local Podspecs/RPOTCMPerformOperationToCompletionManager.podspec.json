@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "ResplendentUtilities": [
-      "~> 0.4"
+      "~> 0.4.13"
     ],
     "FXReachability": [
       "~> 1.3"

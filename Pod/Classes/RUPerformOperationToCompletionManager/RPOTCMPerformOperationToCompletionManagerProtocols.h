@@ -14,6 +14,6 @@
 
 @protocol RPOTCMPerformOperationToCompletionManagerOperation <NSObject>
 
--(void)rpotcm_performOperationToCompletion:(void(^)(BOOL didFinishSuccessfully))completion;
+-(void)rpotcm_performOperationToCompletion:(nonnull void(^)(BOOL didFinishSuccessfully))completion;
 
 @end
