@@ -1,1 +1,0 @@
-../../../ResplendentUtilities/Pod/Classes/ResplendentUtilities/Code/ResplendentUtilities/Controller/RUScrollToTopManager.h

@@ -9,11 +9,8 @@
 #import "RPOTCMPerformOperationToCompletionManager.h"
 #import "NSObject+RPOTCM_FXReachabilityNotifications.h"
 
-#import "RUSingleton.h"
-#import "RUConditionalReturn.h"
-#import "RUProtocolOrNil.h"
-
-#import "FXReachability.h"
+@import ResplendentUtilities;
+@import FXReachability;
 
 
 
@@ -21,10 +18,15 @@
 
 @interface RPOTCMPerformOperationToCompletionManager ()
 
+#pragma mark - canAttemptNextRetryOperation
 @property (nonatomic, readonly) BOOL canAttemptNextRetryOperation;
 
-@property (nonatomic, readonly) NSMutableArray* operationsToRetry;
--(void)addOperationToRetry:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
+#pragma mark - operationsToRetry
+@property (nonatomic, readonly, strong, nullable) NSMutableArray<id<RPOTCMPerformOperationToCompletionManagerOperation>>* operationsToRetry;
+-(void)addOperationToRetry:(nonnull id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
+/**
+ Method works by holding onto a copy of `operationsToRetry`, then removing all objects from `operationsToRetry`, then adding them all back one by one.
+ */
 -(void)attemptToPerformOperationsToRetry;
 
 -(void)notificationDidFire_FXReachability_StatusDidChange;
@@ -42,7 +44,7 @@
 {
 	if (self = [super init])
 	{
-		_operationsToRetry = [NSMutableArray new];
+		_operationsToRetry = [NSMutableArray<id<RPOTCMPerformOperationToCompletionManagerOperation>> new];
 
 		[self setRegisteredForNotifications_RPOTCM_FXReachability_StatusDidChangeOnWithNotificationSelector:@selector(notificationDidFire_FXReachability_StatusDidChange)];
 	}
@@ -56,18 +58,20 @@
 }
 
 #pragma mark - Add Operation
--(void)addOperationToBePerformedToCompletion:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation
+-(void)addOperationToBePerformedToCompletion:(nonnull id<RPOTCMPerformOperationToCompletionManagerOperation>)operation
 {
 	kRUConditionalReturn(operation == nil, YES);
 	kRUConditionalReturn(kRUProtocolOrNil(operation, RPOTCMPerformOperationToCompletionManagerOperation) == nil, YES);
 
+	__weak typeof(self) const self_weak = self;
 	dispatch_async(dispatch_get_main_queue(), ^{
 
 		[operation rpotcm_performOperationToCompletion:^(BOOL didFinishSuccessfully) {
-			
+
+			kRUConditionalReturn(self_weak == nil, YES);
 			if (didFinishSuccessfully == false)
 			{
-				[self addOperationToRetry:operation];
+				[self_weak addOperationToRetry:operation];
 			}
 			
 		}];
@@ -81,13 +85,18 @@
 	return ([FXReachability isReachable]);
 }
 
--(void)addOperationToRetry:(id<RPOTCMPerformOperationToCompletionManagerOperation>)operation
+-(void)addOperationToRetry:(nonnull id<RPOTCMPerformOperationToCompletionManagerOperation>)operation
 {
+	kRUConditionalReturn(operation == nil, YES);
+
+	__weak typeof(self) const self_weak = self;
 	dispatch_async(dispatch_get_main_queue(), ^{
 
-		[self.operationsToRetry addObject:operation];
+		kRUConditionalReturn(self_weak == nil, YES);
 
-		[self attemptToPerformOperationsToRetry];
+		[self_weak.operationsToRetry addObject:operation];
+		[self_weak attemptToPerformOperationsToRetry];
+
 	});
 }
 
@@ -95,16 +104,22 @@
 {
 	kRUConditionalReturn(self.canAttemptNextRetryOperation == false, NO);
 
+	__weak typeof(self) const self_weak = self;
 	dispatch_async(dispatch_get_main_queue(), ^{
 
-		kRUConditionalReturn(self.canAttemptNextRetryOperation == false, NO);
+		kRUConditionalReturn(self_weak == nil, YES);
+		kRUConditionalReturn(self_weak.canAttemptNextRetryOperation == false, NO);
 
-		NSArray* operationsToRetry = [self.operationsToRetry copy];
-		[self.operationsToRetry removeAllObjects];
+		NSMutableArray<id<RPOTCMPerformOperationToCompletionManagerOperation>>* const operationsToRetry = self_weak.operationsToRetry;
+		NSArray<id<RPOTCMPerformOperationToCompletionManagerOperation>>* const operationsToRetry_copy =
+		(operationsToRetry ?
+		 [NSArray<id<RPOTCMPerformOperationToCompletionManagerOperation>> arrayWithArray:operationsToRetry] :
+		 nil);
 
-		for (id<RPOTCMPerformOperationToCompletionManagerOperation> operationToRetry in operationsToRetry)
+		[operationsToRetry removeAllObjects];
+		for (id<RPOTCMPerformOperationToCompletionManagerOperation> operationToRetry in operationsToRetry_copy)
 		{
-			[self addOperationToBePerformedToCompletion:operationToRetry];
+			[self_weak addOperationToBePerformedToCompletion:operationToRetry];
 		}
 		
 	});
