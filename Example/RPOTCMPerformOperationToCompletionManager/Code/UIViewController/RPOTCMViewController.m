@@ -8,16 +8,25 @@
 
 #import "RPOTCMViewController.h"
 
+
+
+
+
 @interface RPOTCMViewController ()
 
 @end
+
+
+
+
 
 @implementation RPOTCMViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+	[self.view setBackgroundColor:[UIColor orangeColor]];
 }
 
 - (void)didReceiveMemoryWarning
