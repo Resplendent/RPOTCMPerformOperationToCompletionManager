@@ -3,9 +3,9 @@ use_frameworks!
 target 'RPOTCMPerformOperationToCompletionManager_Example' do
   pod 'RPOTCMPerformOperationToCompletionManager', :path => '../'
 
+  pod 'RUTextSize', '0.1.12'
+
   target 'RPOTCMPerformOperationToCompletionManager_Tests' do
     inherit! :search_paths
-
-    
   end
 end

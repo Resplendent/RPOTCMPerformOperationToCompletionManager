@@ -1,0 +1,6 @@
+framework module RUTextSize {
+  umbrella header "RUTextSize-umbrella.h"
+
+  export *
+  module * { export * }
+}

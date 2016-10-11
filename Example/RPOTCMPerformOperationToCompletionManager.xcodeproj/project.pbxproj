@@ -14,15 +14,15 @@
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* RPOTCMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* RPOTCMAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* RPOTCMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* RPOTCMViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		D766EDBC1DAC5859003E28BD /* RPOTCMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D766EDB81DAC5859003E28BD /* RPOTCMAppDelegate.m */; };
+		D766EDBD1DAC5859003E28BD /* RPOTCMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */; };
+		D7A01F021DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,10 +49,6 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* RPOTCMPerformOperationToCompletionManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RPOTCMPerformOperationToCompletionManager-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* RPOTCMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPOTCMAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* RPOTCMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPOTCMAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* RPOTCMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPOTCMViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* RPOTCMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPOTCMViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* RPOTCMPerformOperationToCompletionManager_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RPOTCMPerformOperationToCompletionManager_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,8 +58,14 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		67F376564E0646B02A0ED525 /* RPOTCMPerformOperationToCompletionManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RPOTCMPerformOperationToCompletionManager.podspec; path = ../RPOTCMPerformOperationToCompletionManager.podspec; sourceTree = "<group>"; };
 		68DCBB3A0F5EDAED7216ED34 /* Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Tests/Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D39AFBB04BA027A30B8BD32F /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70EB7E61DAC74B900621B8D /* RPOTCMGetEndpointWithDelayRequest_Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMGetEndpointWithDelayRequest_Protocols.h; sourceTree = "<group>"; };
+		D766EDB71DAC5859003E28BD /* RPOTCMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMAppDelegate.h; sourceTree = "<group>"; };
+		D766EDB81DAC5859003E28BD /* RPOTCMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMAppDelegate.m; sourceTree = "<group>"; };
+		D766EDBA1DAC5859003E28BD /* RPOTCMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMViewController.h; sourceTree = "<group>"; };
+		D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMViewController.m; sourceTree = "<group>"; };
+		D7A01F001DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMGetEndpointWithDelayRequest.h; sourceTree = "<group>"; };
+		D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMGetEndpointWithDelayRequest.m; sourceTree = "<group>"; };
 		EF40E0C47EFFA59794FAD358 /* Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Example/Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,11 +143,7 @@
 		6003F593195388D20070C39A /* Example for RPOTCMPerformOperationToCompletionManager */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* RPOTCMAppDelegate.h */,
-				6003F59D195388D20070C39A /* RPOTCMAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* RPOTCMViewController.h */,
-				6003F5A6195388D20070C39A /* RPOTCMViewController.m */,
+				D766EDB51DAC5859003E28BD /* Code */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -191,6 +189,52 @@
 				49D52F532BF2C3137CCE9673 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		D766EDB51DAC5859003E28BD /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				D7A01EFB1DAC6FAC0006AEBD /* NSObject */,
+				D766EDB61DAC5859003E28BD /* UIApplicationDelegate */,
+				D766EDB91DAC5859003E28BD /* UIViewController */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		D766EDB61DAC5859003E28BD /* UIApplicationDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D766EDB71DAC5859003E28BD /* RPOTCMAppDelegate.h */,
+				D766EDB81DAC5859003E28BD /* RPOTCMAppDelegate.m */,
+			);
+			path = UIApplicationDelegate;
+			sourceTree = "<group>";
+		};
+		D766EDB91DAC5859003E28BD /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D766EDBA1DAC5859003E28BD /* RPOTCMViewController.h */,
+				D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		D7A01EFB1DAC6FAC0006AEBD /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				D7A01EFC1DAC6FAC0006AEBD /* Request */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		D7A01EFC1DAC6FAC0006AEBD /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D70EB7E61DAC74B900621B8D /* RPOTCMGetEndpointWithDelayRequest_Protocols.h */,
+				D7A01F001DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.h */,
+				D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,9 +288,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RPOTCM;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Richard Reitzfeld";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 2P455BMH67;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -276,7 +323,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -335,7 +381,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2BB84BF176B90C808C42E0FD /* [CP] Embed Pods Frameworks */ = {
@@ -365,7 +411,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7FA242CD0CEA5AFAEAB6954A /* [CP] Embed Pods Frameworks */ = {
@@ -390,9 +436,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* RPOTCMAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* RPOTCMViewController.m in Sources */,
+				D7A01F021DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m in Sources */,
+				D766EDBD1DAC5859003E28BD /* RPOTCMViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				D766EDBC1DAC5859003E28BD /* RPOTCMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,14 +494,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -467,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -487,20 +539,25 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -513,10 +570,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 2P455BMH67;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager-Prefix.pch";
 				INFOPLIST_FILE = "RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,10 +588,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 2P455BMH67;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager-Prefix.pch";
 				INFOPLIST_FILE = "RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

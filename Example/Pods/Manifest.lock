@@ -1,12 +1,15 @@
 PODS:
   - FXReachability (1.3.2)
-  - ResplendentUtilities (0.4.13)
-  - RPOTCMPerformOperationToCompletionManager (0.1.3):
-    - FXReachability (~> 1.3)
-    - ResplendentUtilities (~> 0.4.13)
+  - ResplendentUtilities (0.5.0)
+  - RPOTCMPerformOperationToCompletionManager (0.2.0):
+    - FXReachability (~> 1.3.2)
+    - ResplendentUtilities (~> 0.5.0)
+  - RUTextSize (0.1.12):
+    - ResplendentUtilities (~> 0.5.0)
 
 DEPENDENCIES:
   - RPOTCMPerformOperationToCompletionManager (from `../`)
+  - RUTextSize (= 0.1.12)
 
 EXTERNAL SOURCES:
   RPOTCMPerformOperationToCompletionManager:
@@ -14,9 +17,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FXReachability: 9a1a07c511e1f8026f2c88b06a70847715078fce
-  ResplendentUtilities: 8da3fd8f89e6e88f4bf1d11c2958514ada5196d6
-  RPOTCMPerformOperationToCompletionManager: 2604b850edf6f26a740c69955464953f0e3ffa3d
+  ResplendentUtilities: df8bb038d91568f9e82ee88ba5796d5d68014cdf
+  RPOTCMPerformOperationToCompletionManager: 9589108ee76dd4fa50278914d2a7821f256c5346
+  RUTextSize: d488ca1bbc59607724c7c50f0fad177a65bc1ba8
 
-PODFILE CHECKSUM: c1505e1045285cfe4ab25dff4bc2a22ec971b865
+PODFILE CHECKSUM: 88c8cb94794697ae339494c01d11b1f1d88b7b78
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

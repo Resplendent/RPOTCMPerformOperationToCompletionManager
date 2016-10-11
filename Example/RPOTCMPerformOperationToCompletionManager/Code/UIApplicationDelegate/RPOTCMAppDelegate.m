@@ -7,11 +7,24 @@
 //
 
 #import "RPOTCMAppDelegate.h"
+#import "RPOTCMViewController.h"
+
+
+
+
 
 @implementation RPOTCMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	UIWindow* const window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+	[window setBackgroundColor:[UIColor redColor]];
+	
+	UINavigationController* const navigationController = [[UINavigationController alloc]initWithRootViewController:[RPOTCMViewController new]];
+	[window setRootViewController:navigationController];
+	
+	[self setWindow:window];
+
     // Override point for customization after application launch.
     return YES;
 }
@@ -41,6 +54,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - window
+-(void)setWindow:(nullable UIWindow*)window
+{
+	if (self.window == window)
+	{
+		return;
+	}
+	
+	_window = window;
+	
+	UIWindow* const window_new = window;
+	if (window_new)
+	{
+		[window_new makeKeyAndVisible];
+	}
 }
 
 @end

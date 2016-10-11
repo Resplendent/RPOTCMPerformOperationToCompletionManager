@@ -17,3 +17,30 @@
 -(void)rpotcm_performOperationToCompletion:(nonnull void(^)(BOOL didFinishSuccessfully))completion;
 
 @end
+
+
+
+
+
+@protocol RPOTCMPerformOperationToCompletionManagerOperation_Retry <NSObject>
+
+@optional
+-(void)rpotcm_operationWillRetry;
+-(void)rpotcm_operationDidRetry;
+
+@end
+
+
+
+
+
+@protocol RPOTCMPerformOperationToCompletionManagerOperation_RetryDelay <NSObject>
+
+@required
+@property (nonatomic, assign) NSTimeInterval rpotcm_currentRetryDelay;
+
+@optional
+-(NSTimeInterval)rpotcm_retryDelay_increment;
+-(NSTimeInterval)rpotcm_retryDelay_max;
+
+@end
