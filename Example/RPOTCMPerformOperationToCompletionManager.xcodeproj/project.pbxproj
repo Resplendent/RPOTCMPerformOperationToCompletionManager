@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		D766EDBC1DAC5859003E28BD /* RPOTCMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D766EDB81DAC5859003E28BD /* RPOTCMAppDelegate.m */; };
 		D766EDBD1DAC5859003E28BD /* RPOTCMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */; };
+		D7A01F021DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +59,13 @@
 		67F376564E0646B02A0ED525 /* RPOTCMPerformOperationToCompletionManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RPOTCMPerformOperationToCompletionManager.podspec; path = ../RPOTCMPerformOperationToCompletionManager.podspec; sourceTree = "<group>"; };
 		68DCBB3A0F5EDAED7216ED34 /* Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Tests/Pods-RPOTCMPerformOperationToCompletionManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D39AFBB04BA027A30B8BD32F /* Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RPOTCMPerformOperationToCompletionManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70EB7E61DAC74B900621B8D /* RPOTCMGetEndpointWithDelayRequest_Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMGetEndpointWithDelayRequest_Protocols.h; sourceTree = "<group>"; };
 		D766EDB71DAC5859003E28BD /* RPOTCMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMAppDelegate.h; sourceTree = "<group>"; };
 		D766EDB81DAC5859003E28BD /* RPOTCMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMAppDelegate.m; sourceTree = "<group>"; };
 		D766EDBA1DAC5859003E28BD /* RPOTCMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMViewController.h; sourceTree = "<group>"; };
 		D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMViewController.m; sourceTree = "<group>"; };
+		D7A01F001DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPOTCMGetEndpointWithDelayRequest.h; sourceTree = "<group>"; };
+		D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPOTCMGetEndpointWithDelayRequest.m; sourceTree = "<group>"; };
 		EF40E0C47EFFA59794FAD358 /* Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RPOTCMPerformOperationToCompletionManager_Example/Pods-RPOTCMPerformOperationToCompletionManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +194,7 @@
 		D766EDB51DAC5859003E28BD /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				D7A01EFB1DAC6FAC0006AEBD /* NSObject */,
 				D766EDB61DAC5859003E28BD /* UIApplicationDelegate */,
 				D766EDB91DAC5859003E28BD /* UIViewController */,
 			);
@@ -212,6 +217,24 @@
 				D766EDBB1DAC5859003E28BD /* RPOTCMViewController.m */,
 			);
 			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		D7A01EFB1DAC6FAC0006AEBD /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				D7A01EFC1DAC6FAC0006AEBD /* Request */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		D7A01EFC1DAC6FAC0006AEBD /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D70EB7E61DAC74B900621B8D /* RPOTCMGetEndpointWithDelayRequest_Protocols.h */,
+				D7A01F001DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.h */,
+				D7A01F011DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A01F021DAC6FF80006AEBD /* RPOTCMGetEndpointWithDelayRequest.m in Sources */,
 				D766EDBD1DAC5859003E28BD /* RPOTCMViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D766EDBC1DAC5859003E28BD /* RPOTCMAppDelegate.m in Sources */,

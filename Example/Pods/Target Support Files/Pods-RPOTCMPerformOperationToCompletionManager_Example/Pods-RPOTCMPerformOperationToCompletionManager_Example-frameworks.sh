@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/FXReachability/FXReachability.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RUTextSize/RUTextSize.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ResplendentUtilities/ResplendentUtilities.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/FXReachability/FXReachability.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RPOTCMPerformOperationToCompletionManager/RPOTCMPerformOperationToCompletionManager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RUTextSize/RUTextSize.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ResplendentUtilities/ResplendentUtilities.framework"
 fi
