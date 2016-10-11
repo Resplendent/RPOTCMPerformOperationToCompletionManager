@@ -24,3 +24,13 @@
 requestDidSucceed_with_responseString:(nonnull NSString*)responseString;
 
 @end
+
+
+
+
+
+@protocol RPOTCMGetEndpointWithDelayRequest_requestRetryDelegate <NSObject>
+
+-(void)getEndpointWithDelayRequest_didRetry:(nonnull RPOTCMGetEndpointWithDelayRequest*)getEndpointWithDelayRequest;
+
+@end

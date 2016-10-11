@@ -20,7 +20,10 @@
 
 
 
-@interface RPOTCMViewController () <RPOTCMGetEndpointWithDelayRequest_requestSuccessDelegate>
+@interface RPOTCMViewController () <RPOTCMGetEndpointWithDelayRequest_requestSuccessDelegate, RPOTCMGetEndpointWithDelayRequest_requestRetryDelegate>
+
+#pragma mark - getEndpointWithDelayRequest
+@property (nonatomic, strong, nullable) RPOTCMGetEndpointWithDelayRequest* getEndpointWithDelayRequest;
 
 #pragma mark - retryAttemptCount
 @property (nonatomic, assign) NSUInteger retryAttemptCount;
@@ -41,7 +44,7 @@
 #pragma mark - lastResponseLabel
 @property (nonatomic, readonly, strong, nullable) UILabel* lastResponseLabel;
 -(CGRect)lastResponseLabel_frame;
--(void)lastResponseLabel_text_update_with_responseString:(nonnull NSString*)responseString;
+-(void)lastResponseLabel_text_update_with_responseString:(nullable NSString*)responseString;
 
 @end
 
@@ -55,7 +58,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
+
 	[self.view setBackgroundColor:[UIColor whiteColor]];
 
 	[self setEdgesForExtendedLayout:UIRectEdgeNone];
@@ -74,13 +77,14 @@
 	[self.endpointTextField setTextAlignment:NSTextAlignmentLeft];
 	[self.endpointTextField setText:@"https://api.github.com/"];
 	[self.view addSubview:self.endpointTextField];
-	
+
 	_retryAttemptCountLabel = [UILabel new];
 	[self.retryAttemptCountLabel setBackgroundColor:[UIColor clearColor]];
 	[self.retryAttemptCountLabel setTextAlignment:NSTextAlignmentLeft];
 	[self.retryAttemptCountLabel setTextColor:[UIColor darkTextColor]];
 	[self.retryAttemptCountLabel setFont:[UIFont systemFontOfSize:8.0f]];
 	[self.view addSubview:self.retryAttemptCountLabel];
+	[self retryAttemptCountLabel_text_update];
 
 	_lastResponseLabel = [UILabel new];
 	[self.lastResponseLabel setBackgroundColor:[UIColor clearColor]];
@@ -89,6 +93,7 @@
 	[self.lastResponseLabel setFont:[UIFont systemFontOfSize:8.0f]];
 	[self.lastResponseLabel setNumberOfLines:0];
 	[self.view addSubview:self.lastResponseLabel];
+	[self lastResponseLabel_text_update_with_responseString:nil];
 }
 
 -(void)viewWillLayoutSubviews
@@ -133,11 +138,22 @@
 		return;
 	}
 
-	[self setRetryAttemptCount:0];
-
 	RPOTCMGetEndpointWithDelayRequest* const getEndpointWithDelayRequest = [[RPOTCMGetEndpointWithDelayRequest alloc]init_with_URL:URL];
 	[getEndpointWithDelayRequest setRequestSuccessDelegate:self];
+	[getEndpointWithDelayRequest setRequestRetryDelegate:self];
 	[[RPOTCMPerformOperationToCompletionManager sharedInstance]addOperationToBePerformedToCompletion:getEndpointWithDelayRequest];
+	[self setGetEndpointWithDelayRequest:getEndpointWithDelayRequest];
+}
+
+#pragma mark - getEndpointWithDelayRequest
+-(void)setGetEndpointWithDelayRequest:(RPOTCMGetEndpointWithDelayRequest *)getEndpointWithDelayRequest
+{
+	kRUConditionalReturn(self.getEndpointWithDelayRequest == getEndpointWithDelayRequest, NO);
+
+	_getEndpointWithDelayRequest = getEndpointWithDelayRequest;
+
+	[self setRetryAttemptCount:0];
+	[self lastResponseLabel_text_update_with_responseString:nil];
 }
 
 #pragma mark - endpointTextField
@@ -165,7 +181,7 @@
 
 -(void)retryAttemptCountLabel_text_update
 {
-	[self.retryAttemptCountLabel setText:RUStringWithFormat(@"Retries: %lui",self.retryAttemptCount)];
+	[self.retryAttemptCountLabel setText:RUStringWithFormat(@"Retries: %lu",self.retryAttemptCount)];
 
 	[self.view setNeedsLayout];
 }
@@ -174,9 +190,9 @@
 -(CGRect)lastResponseLabel_frame
 {
 	CGRect const retryAttemptCountLabel_frame = self.retryAttemptCountLabel_frame;
-	
+
 	CGSize const textSize = [self.lastResponseLabel ruTextSize];
-	
+
 	return CGRectCeilOrigin((CGRect){
 		.origin.y		= CGRectGetMaxY(retryAttemptCountLabel_frame),
 		.size.width		= CGRectGetWidth(self.view.bounds),
@@ -184,9 +200,13 @@
 	});
 }
 
--(void)lastResponseLabel_text_update_with_responseString:(NSString *)responseString
+-(void)lastResponseLabel_text_update_with_responseString:(nullable NSString*)responseString
 {
-	[self.lastResponseLabel setText:RUStringWithFormat(@"Response String:\n%@",responseString)];
+	[self.lastResponseLabel setText:
+	 (responseString ?
+	  RUStringWithFormat(@"Response String:\n%@",responseString) :
+	  nil)
+	 ];
 
 	[self.view setNeedsLayout];
 }
@@ -196,6 +216,14 @@
 requestDidSucceed_with_responseString:(nonnull NSString*)responseString
 {
 	[self lastResponseLabel_text_update_with_responseString:responseString];
+}
+
+#pragma mark - RPOTCMGetEndpointWithDelayRequest_requestRetryDelegate
+-(void)getEndpointWithDelayRequest_didRetry:(nonnull RPOTCMGetEndpointWithDelayRequest*)getEndpointWithDelayRequest
+{
+	kRUConditionalReturn(self.getEndpointWithDelayRequest != getEndpointWithDelayRequest, NO);
+
+	[self setRetryAttemptCount:self.retryAttemptCount + 1];
 }
 
 @end

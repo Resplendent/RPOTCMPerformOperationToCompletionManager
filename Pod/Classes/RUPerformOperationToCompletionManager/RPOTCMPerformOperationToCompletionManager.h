@@ -21,6 +21,10 @@
 #pragma mark - operationsToRetry
 -(void)addOperationToBePerformedToCompletion:(nonnull id<RPOTCMPerformOperationToCompletionManagerOperation>)operation;
 
+#pragma mark - retryDelay
+@property (nonatomic, assign) NSTimeInterval retryDelay_increment_default;
+@property (nonatomic, assign) NSTimeInterval retryDelay_max_default;
+
 #pragma mark - Singleton
 +(nonnull instancetype)sharedInstance;
 

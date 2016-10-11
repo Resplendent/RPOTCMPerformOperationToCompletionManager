@@ -16,10 +16,13 @@
 
 
 
-@interface RPOTCMGetEndpointWithDelayRequest : NSObject <RPOTCMPerformOperationToCompletionManagerOperation>
+@interface RPOTCMGetEndpointWithDelayRequest : NSObject <RPOTCMPerformOperationToCompletionManagerOperation, RPOTCMPerformOperationToCompletionManagerOperation_RetryDelay, RPOTCMPerformOperationToCompletionManagerOperation_Retry>
 
 #pragma mark - requestSuccessDelegate
 @property (nonatomic, assign, nullable) id<RPOTCMGetEndpointWithDelayRequest_requestSuccessDelegate> requestSuccessDelegate;
+
+#pragma mark - requestRetryDelegate
+@property (nonatomic, assign, nullable) id<RPOTCMGetEndpointWithDelayRequest_requestRetryDelegate> requestRetryDelegate;
 
 #pragma mark - URL
 @property (nonatomic, readonly, strong, nullable) NSURL* URL;

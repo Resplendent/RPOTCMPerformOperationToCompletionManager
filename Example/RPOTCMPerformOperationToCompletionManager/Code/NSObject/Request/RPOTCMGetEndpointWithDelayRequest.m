@@ -9,6 +9,8 @@
 #import "RPOTCMGetEndpointWithDelayRequest.h"
 
 #import <ResplendentUtilities/RUConditionalReturn.h>
+#import <ResplendentUtilities/RUClassOrNilUtil.h>
+#import <ResplendentUtilities/RUDLog.h>
 
 
 
@@ -18,6 +20,11 @@
 
 #pragma mark - URL
 @property (nonatomic, strong, nullable) NSURL* URL;
+
+#pragma mark - request
+-(BOOL)request_handle_response_with_data:(nullable NSData*)data
+								response:(nullable NSURLResponse*)response
+								   error:(nullable NSError*)error;
 
 #pragma mark - requestSuccessDelegate
 -(void)requestSuccessDelegate_requestDidSucceed_with_responseString:(nonnull NSString*)responseString;
@@ -84,59 +91,52 @@
 							   completionHandler:
 	 ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 
-		 if (error == nil)
-		 {
-			 NSString* const responseString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-			 [self_weak requestSuccessDelegate_requestDidSucceed_with_responseString:responseString];
-			 completion(YES);
-		 }
-		 else
-		 {
-			 completion(NO);
-		 }
+		 dispatch_async(dispatch_get_main_queue(), ^{
+
+			 BOOL const success =
+			 [self_weak request_handle_response_with_data:data
+												 response:response
+													error:error];
+			 RUDLog(@"success: %i",success);
+			 
+			 completion(success);
+
+		 });
 
 	 }];
 
+	RUDLog(@"Sending request to: %@",URL);
 	[sessionDataTask resume];
+}
 
-//	[[SMNetworkManager sharedInstance] loadAllColorsWithPage:[SMPageContainer_Number page_minimum] success:
-//	 ^(RKObjectRequestOperation * _Nonnull operation, NSArray<SMUserColorTheme *> * _Nullable userColorThemes) {
-//		 
-//		 [self_weak requestSuccessDelegate_notify_with_userColorThemes:userColorThemes];
-//		 
-//		 if (completion)
-//		 {
-//			 completion(YES);
-//		 }
-//		 
-//	 }
-//													 failure:
-//	 ^(RKObjectRequestOperation *operation, NSError *error, BOOL handledError) {
-//		 
-//		 if (completion)
-//		 {
-//			 BOOL const completed = (operation.isCancelled || handledError);
-//			 SMLogVerbose(@"completed: %i",completed);
-//			 
-//#warning !!Warning!! Need to implement delay at the library level
-//			 NSTimeInterval const delay =
-//			 (completed == false ?
-//			  self_weak.getCurrentDelayAndIncrement :
-//			  0.0f);
-//			 
-//			 if (delay > 0.0f)
-//			 {
-//				 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//					 completion(completed);
-//				 });
-//			 }
-//			 else
-//			 {
-//				 completion(completed);
-//			 }
-//		 }
-//		 
-//	 }];
+#pragma mark - request
+-(BOOL)request_handle_response_with_data:(nullable NSData*)data
+								response:(nullable NSURLResponse*)response
+								   error:(nullable NSError*)error
+{
+	RUDLog(@"Got response: %@",response);
+
+	kRUConditionalReturn_ReturnValueFalse(error != nil, NO);
+
+	NSHTTPURLResponse* const HTTPURLResponse = kRUClassOrNil(response, NSHTTPURLResponse);
+	kRUConditionalReturn_ReturnValueFalse(HTTPURLResponse == nil, YES);
+
+	NSInteger const statusCode = HTTPURLResponse.statusCode;
+	kRUConditionalReturn_ReturnValueFalse(statusCode != 200, NO);
+
+	NSString* const responseString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+	[self requestSuccessDelegate_requestDidSucceed_with_responseString:responseString];
+
+	return YES;
+}
+
+#pragma mark - RPOTCMPerformOperationToCompletionManagerOperation_RetryDelay
+@synthesize rpotcm_currentRetryDelay;
+
+#pragma mark - RPOTCMPerformOperationToCompletionManagerOperation_Retry
+-(void)rpotcm_operationDidRetry
+{
+	[self.requestRetryDelegate getEndpointWithDelayRequest_didRetry:self];
 }
 
 @end
