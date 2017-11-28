@@ -181,7 +181,7 @@
 
 -(void)retryAttemptCountLabel_text_update
 {
-	[self.retryAttemptCountLabel setText:RUStringWithFormat(@"Retries: %lu",self.retryAttemptCount)];
+	[self.retryAttemptCountLabel setText:RUStringWithFormat(@"Retries: %lu",(unsigned long)self.retryAttemptCount)];
 
 	[self.view setNeedsLayout];
 }

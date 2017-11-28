@@ -10,6 +10,7 @@
 #import "RUAttributesDictionaryBuilder.h"
 #import "NSString+RUTextSize.h"
 #import "NSAttributedString+RUTextSize.h"
+#import "UIButton+RUAttributesDictionaryBuilder.h"
 
 
 
@@ -20,13 +21,13 @@
 #pragma mark - Current Title Size
 -(CGSize)ru_currentTitleTextSizeConstrainedToWidth:(CGFloat)width
 {
-	NSString* currentTitle = self.currentTitle;
+	NSString* const currentTitle = self.currentTitle;
 	if (([currentTitle respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) &&
 		([currentTitle respondsToSelector:@selector(ruTextSizeWithBoundingWidth:attributes:)]))
 	{
-		RUAttributesDictionaryBuilder* attributesDictionaryBuilder = [RUAttributesDictionaryBuilder new];
-		[attributesDictionaryBuilder absorbPropertiesFromButton:self];
-		return [currentTitle ruTextSizeWithBoundingWidth:width attributes:[attributesDictionaryBuilder createAttributesDictionary]];
+		RUAttributesDictionaryBuilder* const attributesDictionaryBuilder = [RUAttributesDictionaryBuilder new];
+		[self ru_apply_to_attributesDictionaryBuilder:attributesDictionaryBuilder];
+		return [currentTitle ruTextSizeWithBoundingWidth:width attributes:[attributesDictionaryBuilder attributesDictionary_generate]];
 	}
 	else
 	{

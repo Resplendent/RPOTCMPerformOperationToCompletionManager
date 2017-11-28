@@ -26,21 +26,28 @@
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 @property (nonatomic, strong, nullable) NSNumber* kerning;
 
+@property (nonatomic, assign) NSUnderlineStyle underlineStyle;
+@property (nonatomic, assign) NSUnderlineStyle strikethroughStyle;
+
 -(void)setProperty:(nullable id)propertyValue
 	 attributeType:(RUAttributesDictionaryBuilder_attributeType)attributeType;
 
 #pragma mark - Absorb
--(void)absorbPropertiesFromLabel:(nonnull UILabel*)label;
--(void)absorbPropertiesFromButton:(nonnull UIButton*)button;
--(void)absorbPropertiesFromTextField:(nonnull UITextField*)textField;
--(void)absorbPropertiesFromTextView:(nonnull UITextView*)textView;
 -(void)absorbPropertiesAttributesDictionary:(nonnull NSDictionary*)attributesDictionary
 						   ignoreNilEntries:(BOOL)ignoreNilEntries;
 
-#pragma mark - Create
--(nullable NSDictionary*)createAttributesDictionary;
+#pragma mark - attributesDictionary
+-(nonnull NSDictionary<NSString*,id>*)attributesDictionary_generate;
+-(nullable id)attributesDictionary_value_for_attributeType:(RUAttributesDictionaryBuilder_attributeType)attributeType;
+-(nullable NSDictionary<NSString*,id>*)attributesDictionary_extraValues_for_value:(nullable id)value
+																	attributeType:(RUAttributesDictionaryBuilder_attributeType)attributeType;
 
-#pragma mark - Attribute Type
-+(nonnull NSString*)attributeTypeKeyForEnum:(RUAttributesDictionaryBuilder_attributeType)attributeType;
+#pragma mark - attributeType
++(nullable NSString*)attributeType_key_for_attributeType:(RUAttributesDictionaryBuilder_attributeType)attributeType;
+
+#if DEBUG
+#pragma mark - Unit Testing
++(void)DEBUG__RUAttributesDictionaryBuilder_RUTextSize_kerning_unitTest;
+#endif
 
 @end

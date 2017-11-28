@@ -7,6 +7,7 @@
 //
 
 #import "NSAttributedString+RUTextSize.h"
+#import "RUAttributesDictionaryBuilder.h"
 
 #import <ResplendentUtilities/RUConstants.h>
 #import <ResplendentUtilities/RUConditionalReturn.h>
@@ -27,8 +28,36 @@
 			.height		= CGFLOAT_MAX,
 		};
 		
-		NSStringDrawingOptions options = (NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine);
-		CGRect textBoundingRect = [self boundingRectWithSize:boundingSize options:options context:nil];
+		__block NSStringDrawingOptions options = (NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading);
+		NSString* const attributeName_paragraphStyle = [RUAttributesDictionaryBuilder attributeType_key_for_attributeType:RUAttributesDictionaryBuilder_attributeType_paragraphStyle];
+
+		[self enumerateAttributesInRange:NSMakeRange(0, self.length)
+								 options:0
+							  usingBlock:
+		 ^(NSDictionary<NSString *,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
+
+			 NSParagraphStyle* const paragraphStyle = [attrs objectForKey:attributeName_paragraphStyle];
+
+			 if (paragraphStyle)
+			 {
+				 switch (paragraphStyle.lineBreakMode)
+				 {
+					 case NSLineBreakByWordWrapping:
+					 case NSLineBreakByCharWrapping:
+					 {
+						 options |= (NSStringDrawingTruncatesLastVisibleLine);
+						 *stop = YES;
+						 
+					 }
+						 break;
+						 
+					 default:
+						 break;
+				 }
+			 }
+
+		 }];
+		CGRect const textBoundingRect = [self boundingRectWithSize:boundingSize options:options context:nil];
 		
 		NSAssert([self DEBUG__NSAttributedString_RUTextSize_unitTest_withBoundingSize:boundingSize
 																	 textBoundingRect:textBoundingRect
@@ -108,10 +137,14 @@
 {
 	if (CGRectGetWidth(textBoundingRect) <= boundingSize.width)
 	{
-		CGRect textRect_withoutBounding = [self boundingRectWithSize:CGSizeZero options:options context:nil];
+		CGRect const textRect_withoutBounding = [self boundingRectWithSize:CGSizeZero options:options context:nil];
 		if (CGRectGetWidth(textRect_withoutBounding) > CGRectGetWidth(textBoundingRect))
 		{
-			if (CGRectGetHeight(textBoundingRect) <= CGRectGetHeight(textRect_withoutBounding))
+			/**
+			 We need `horizontalTolerance` because sometimes `boundingRectWithSize:options:context:` returns a different size.width based on the constraint.
+			 */
+			CGFloat const horizontalTolerance = 0.0001f;
+			if (CGRectGetHeight(textBoundingRect) + horizontalTolerance <= CGRectGetHeight(textRect_withoutBounding))
 			{
 				return RUStringWithFormat(@"attributed string %@ had bounding width %f, which produced a textBoundingRect %@ which was bounded, yet textRect_withoutBounding %@ had the same height. It should be taller.",self,boundingSize.width,NSStringFromCGRect(textBoundingRect),NSStringFromCGRect(textRect_withoutBounding));
 			}
