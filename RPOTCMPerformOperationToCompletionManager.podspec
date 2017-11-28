@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RPOTCMPerformOperationToCompletionManager"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "Asynchronously performs operations while observing for reachability."
 # s.description      = <<-DESC
 #                        An optional longer description of RPOTCMPerformOperationToCompletionManager
