@@ -155,7 +155,7 @@
 			[operation_retry rpotcm_operationWillRetry];
 		}
 
-		void(^actions)() = ^() {
+		void(^actions)(void) = ^() {
 
 			[self_weak addOperationToBePerformedToCompletion:operationToRetry];
 
