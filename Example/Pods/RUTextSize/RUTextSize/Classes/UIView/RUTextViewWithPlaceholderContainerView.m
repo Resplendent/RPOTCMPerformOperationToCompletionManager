@@ -7,10 +7,11 @@
 //
 
 #import "RUTextViewWithPlaceholderContainerView.h"
-#import "UILabel+RUTextSize.h"
-#import "UIView+RUUtility.h"
-#import "RUConditionalReturn.h"
 #import "UITextView+RUTextSize.h"
+#import "UILabel+RUTextSize.h"
+
+#import <ResplendentUtilities/UIView+RUUtility.h>
+#import <ResplendentUtilities/RUConditionalReturn.h>
 
 
 
@@ -25,15 +26,15 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 @interface RUTextViewWithPlaceholderContainerView ()
 
 #pragma mark - tapGesture
-@property (nonatomic, readonly, nullable) UITapGestureRecognizer* tapGesture;
+@property (nonatomic, readonly, strong, nullable) UITapGestureRecognizer* tapGesture;
 -(void)didTap_tapGesture;
 
 #pragma mark - textView
--(UIEdgeInsets)textViewContentInset;
+-(UIEdgeInsets)textView_contentInset;
+-(void)textView_setKVORegistered:(BOOL)registered;
 
-#pragma mark - KVO
--(void)ru_setKVORegistered_textView:(BOOL)registered;
--(void)ru_setKVORegistered_textViewPlaceholderLabel:(BOOL)registered;
+#pragma mark - textViewPlaceholderLabel
+-(void)textViewPlaceholderLabel_setKVORegistered:(BOOL)registered;
 
 @end
 
@@ -46,8 +47,8 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 #pragma mark - NSObject
 -(void)dealloc
 {
-	[self ru_setKVORegistered_textView:NO];
-	[self ru_setKVORegistered_textViewPlaceholderLabel:NO];
+	[self textView_setKVORegistered:NO];
+	[self textViewPlaceholderLabel_setKVORegistered:NO];
 }
 
 #pragma mark - UIView
@@ -57,7 +58,7 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 	{
 		_tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTap_tapGesture)];
 		[self addGestureRecognizer:self.tapGesture];
-		
+
 		_textView = [UITextView new];
 		[self.textView setDelegate:self];
 		[self addSubview:self.textView];
@@ -65,8 +66,8 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 		_textViewPlaceholderLabel = [UILabel new];
 		[self addSubview:self.textViewPlaceholderLabel];
 
-		[self ru_setKVORegistered_textView:YES];
-		[self ru_setKVORegistered_textViewPlaceholderLabel:YES];
+		[self textView_setKVORegistered:YES];
+		[self textViewPlaceholderLabel_setKVORegistered:YES];
 	}
 
 	return self;
@@ -77,7 +78,7 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 	[super layoutSubviews];
 
 	[self.textView setFrame:self.textViewFrame];
-	[self.textView setContentInset:self.textViewContentInset];
+	[self.textView setContentInset:self.textView_contentInset];
 
 	[self.textViewPlaceholderLabel setFrame:self.textViewPlaceholderLabelFrame];
 }
@@ -97,19 +98,45 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 	return UIEdgeInsetsInsetRect(self.bounds, self.textViewFrameInsets);
 }
 
--(UIEdgeInsets)textViewContentInset
+-(UIEdgeInsets)textView_contentInset
 {
-	UIEdgeInsets textViewContentInset = self.textView.contentInset;
+	UIEdgeInsets textView_contentInset = self.textView.contentInset;
 
 	if (self.centerTextVertically)
 	{
-		CGFloat deadSpace = (CGRectGetHeight(self.textView.bounds) - self.textView.contentSize.height);
-		CGFloat verticalInset = MAX(0, deadSpace / 2.0f);
-		textViewContentInset.top = verticalInset;
-		textViewContentInset.bottom = verticalInset;
+		CGFloat const deadSpace = (CGRectGetHeight(self.textView.bounds) - self.textView.contentSize.height);
+		CGFloat const verticalInset = MAX(0, deadSpace / 2.0f);
+		textView_contentInset.top = verticalInset;
+		textView_contentInset.bottom = verticalInset;
 	}
 
-	return textViewContentInset;
+	return textView_contentInset;
+}
+
+-(void)textView_setKVORegistered:(BOOL)registered
+{
+	typeof(self.textView) const textView = self.textView;
+	kRUConditionalReturn(textView == nil, NO);
+
+	NSMutableArray<NSString*>* const propertiesToObserve = [NSMutableArray<NSString*> array];
+	[propertiesToObserve addObject:NSStringFromSelector(@selector(text))];
+	[propertiesToObserve addObject:NSStringFromSelector(@selector(contentSize))];
+
+	[propertiesToObserve enumerateObjectsUsingBlock:^(NSString * _Nonnull propertyToObserve, NSUInteger idx, BOOL * _Nonnull stop) {
+		if (registered)
+		{
+			[textView addObserver:self
+					   forKeyPath:propertyToObserve
+						  options:(NSKeyValueObservingOptionInitial)
+						  context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
+		}
+		else
+		{
+			[textView removeObserver:self
+						  forKeyPath:propertyToObserve
+							 context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
+		}
+	}];
 }
 
 #pragma mark - textViewPlaceholderLabel
@@ -133,15 +160,18 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 
 -(CGRect)textViewPlaceholderLabelFrame
 {
-	CGSize textSize = [self.textViewPlaceholderLabel ruTextSize];
+	CGSize const textSize = [self.textViewPlaceholderLabel ruTextSize];
 
-	CGFloat yCoord = (self.centerTextVertically ?
-					  CGRectGetVerticallyAlignedYCoordForHeightOnHeight(textSize.height, CGRectGetHeight(self.bounds)) :
-					  0.0f);
+	CGFloat const yCoord =
+	(
+	 self.centerTextVertically ?
+	 CGRectGetVerticallyAlignedYCoordForHeightOnHeight(textSize.height, CGRectGetHeight(self.bounds)) :
+	 0.0f
+	 );
 
-	UIOffset textViewPlaceholderLabel_frame_offset = self.textViewPlaceholderLabel_frame_offset;
+	UIOffset const textViewPlaceholderLabel_frame_offset = self.textViewPlaceholderLabel_frame_offset;
 
-	CGRect textViewPlaceholderLabelFrame_beforeInsets = (CGRect){
+	CGRect const textViewPlaceholderLabelFrame_beforeInsets = (CGRect){
 		.origin.x		= textViewPlaceholderLabel_frame_offset.horizontal,
 		.origin.y		= yCoord + textViewPlaceholderLabel_frame_offset.vertical,
 		.size.width		= CGRectGetWidth(self.bounds),
@@ -149,6 +179,31 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 	};
 
 	return CGRectCeilOrigin(UIEdgeInsetsInsetRect(textViewPlaceholderLabelFrame_beforeInsets, self.textViewPlaceholderLabelFrameInsets));
+}
+
+-(void)textViewPlaceholderLabel_setKVORegistered:(BOOL)registered
+{
+	typeof(self.textViewPlaceholderLabel) const textViewPlaceholderLabel = self.textViewPlaceholderLabel;
+	kRUConditionalReturn(textViewPlaceholderLabel == nil, NO);
+
+	NSMutableArray<NSString*>* const propertiesToObserve = [NSMutableArray<NSString*> array];
+	[propertiesToObserve addObject:NSStringFromSelector(@selector(text))];
+
+	[propertiesToObserve enumerateObjectsUsingBlock:^(NSString * _Nonnull propertyToObserve, NSUInteger idx, BOOL * _Nonnull stop) {
+		if (registered)
+		{
+			[textViewPlaceholderLabel addObserver:self
+									   forKeyPath:propertyToObserve
+										  options:(NSKeyValueObservingOptionInitial)
+										  context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
+		}
+		else
+		{
+			[textViewPlaceholderLabel removeObserver:self
+										  forKeyPath:propertyToObserve
+											 context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
+		}
+	}];
 }
 
 #pragma mark - UITextViewDelegate
@@ -186,61 +241,6 @@ static void* kRUTextViewWithPlaceholderContainerView__KVOContext = &kRUTextViewW
 }
 
 #pragma mark - KVO
--(void)ru_setKVORegistered_textView:(BOOL)registered
-{
-	typeof(self.textView) textView = self.textView;
-	kRUConditionalReturn(textView == nil, NO);
-	
-	NSArray* propertiesToObserve = @[
-									 @"text",
-									 @"contentSize",
-									 ];
-	
-	for (NSString* propertyToObserve in propertiesToObserve)
-	{
-		if (registered)
-		{
-			[textView addObserver:self
-					   forKeyPath:propertyToObserve
-						  options:(NSKeyValueObservingOptionInitial)
-						  context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
-		}
-		else
-		{
-			[textView removeObserver:self
-						  forKeyPath:propertyToObserve
-							 context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
-		}
-	}
-}
-
--(void)ru_setKVORegistered_textViewPlaceholderLabel:(BOOL)registered
-{
-	typeof(self.textViewPlaceholderLabel) textViewPlaceholderLabel = self.textViewPlaceholderLabel;
-	kRUConditionalReturn(textViewPlaceholderLabel == nil, NO);
-	
-	NSArray* propertiesToObserve = @[
-									 @"text",
-									 ];
-	
-	for (NSString* propertyToObserve in propertiesToObserve)
-	{
-		if (registered)
-		{
-			[textViewPlaceholderLabel addObserver:self
-									   forKeyPath:propertyToObserve
-										  options:(NSKeyValueObservingOptionInitial)
-										  context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
-		}
-		else
-		{
-			[textViewPlaceholderLabel removeObserver:self
-										  forKeyPath:propertyToObserve
-											 context:&kRUTextViewWithPlaceholderContainerView__KVOContext];
-		}
-	}
-}
-
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if (context == kRUTextViewWithPlaceholderContainerView__KVOContext)

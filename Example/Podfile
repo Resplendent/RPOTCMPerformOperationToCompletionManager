@@ -1,9 +1,11 @@
+platform :ios, '8.0'
+
 use_frameworks!
 
 target 'RPOTCMPerformOperationToCompletionManager_Example' do
   pod 'RPOTCMPerformOperationToCompletionManager', :path => '../'
 
-  pod 'RUTextSize', '0.1.12'
+  pod 'RUTextSize', '0.1.17'
 
   target 'RPOTCMPerformOperationToCompletionManager_Tests' do
     inherit! :search_paths
